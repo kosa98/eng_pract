@@ -263,3 +263,4 @@ class KNearest:
             Вектор предсказанных классов.
         """
         return np.argmax(self.predict_proba(X), axis=1)
+    
