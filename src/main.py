@@ -11,3 +11,4 @@ if __name__ == '__main__':
     clf.fit(X_train, y_train)
     pred = clf.predict(X_test)
     print(f'accuracy: {100 * np.mean(pred == y_test) // 1}%')
+    
