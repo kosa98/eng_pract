@@ -52,13 +52,14 @@ def plot_roc_curve(X_train, y_train, X_test, y_test, max_k=30):
         fpr = []
         for w in np.arange(-0.01, 1.02, 0.01):
             y_pred = [(0 if p > w else 1) for p in p_pred]
-            tpr.append(sum(1 for yp, yt in zip(y_pred, y_test) 
+            tpr.append(sum(1 for yp, yt in zip(y_pred, y_test)
                            if yp == 0 and yt == 0) / positive_samples)
-            fpr.append(sum(1 for yp, yt in zip(y_pred, y_test) 
-                           if yp == 0 and yt != 0) / (len(y_test) - positive_samples))
+            fpr.append(sum(1 for yp, yt in zip(y_pred, y_test)
+                           if yp == 0 and yt != 0) /
+                       (len(y_test) - positive_samples))
         curves_tpr.append(tpr)
         curves_fpr.append(fpr)
-    plt.figure(figsize = (7, 7))
+    plt.figure(figsize=(7, 7))
     for tpr, fpr, c in zip(curves_tpr, curves_fpr, colors):
         plt.plot(fpr, tpr, color=c)
     plt.plot([0, 1], [0, 1], linestyle="--")
@@ -69,7 +70,7 @@ def plot_roc_curve(X_train, y_train, X_test, y_test, max_k=30):
     plt.tight_layout()
     plt.show()
 
-    
+
 def draw_plots():
     scaler = Scaler()
     X, y = read_cancer_dataset("./data/raw/cancer.csv")
@@ -79,6 +80,6 @@ def draw_plots():
     plot_precision_recall(X_train, y_train, X_test, y_test)
     plot_roc_curve(X_train, y_train, X_test, y_test, max_k=10)
 
-    
+
 if __name__ == "__main__":
     draw_plots()
