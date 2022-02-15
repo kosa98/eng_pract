@@ -69,6 +69,7 @@ def plot_roc_curve(X_train, y_train, X_test, y_test, max_k=30):
     plt.tight_layout()
     plt.show()
 
+    
 def draw_plots():
     scaler = Scaler()
     X, y = read_cancer_dataset("./data/raw/cancer.csv")
@@ -78,5 +79,6 @@ def draw_plots():
     plot_precision_recall(X_train, y_train, X_test, y_test)
     plot_roc_curve(X_train, y_train, X_test, y_test, max_k=10)
 
+    
 if __name__ == "__main__":
     draw_plots()
