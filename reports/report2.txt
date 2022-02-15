@@ -1,0 +1,48 @@
+Bandit
+
+Этот инструмент был выбран в первую очередь из-за названия, во второую так как он проверяет безопасноть. Использовалась настройка -r что бы проверить весь код. 
+Всего встречается ошибка одного вида 
+
+>> Issue: [B101:assert_used] Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+   Severity: Low   Confidence: High
+   Location: ./tests/test_split.py:20:4
+   More Info: https://bandit.readthedocs.io/en/latest/plugins/b101_assert_used.html
+19          assert X_train.shape[0] + X_test.shape[0] == X.shape[0]
+20          assert y_train.shape[0] + y_test.shape[0] == y.shape[0]
+
+Code scanned:
+        Total lines of code: 418
+        Total lines skipped (#nosec): 0
+
+Run metrics:
+        Total issues (by severity):
+                Undefined: 0.0
+                Low: 12.0
+                Medium: 0.0
+                High: 0.0
+        Total issues (by confidence):
+                Undefined: 0.0
+                Low: 0.0
+                Medium: 0.0
+                High: 12.0
+
+
+
+
+autopep8
+
+Этот инструмент был выбран  из-за того, что проверяет codestyle. Использовалась настройка --aggressive -r что бы проверить весь код. 
+3 ошибки вида неправильно расставлены пробеллы, и нет переноса строки в конце файла
+-    plt.figure(figsize = (7, 7))
++    plt.figure(figsize=(7, 7))
+
+
+Pylint
+выбран, так как проверяет правильность написанного.
+-m
+В двух местах возникло деление на 0
+tests/test_metrics.py: 20 warnings
+  /home/kosa98/.local/lib/python3.8/site-packages/sklearn/metrics/_classification.py:1318: UndefinedMetricWarning: Recall is ill-defined and being set to 0.0 in labels with no true samples. Use `zero_division` parameter to control this behavior.
+    _warn_prf(average, modifier, msg_start, len(result))
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
