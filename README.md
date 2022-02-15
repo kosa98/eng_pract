@@ -1,1 +1,1 @@
-# eng_pract
+# KNN algorithm
