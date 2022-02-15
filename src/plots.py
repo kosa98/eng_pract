@@ -52,8 +52,10 @@ def plot_roc_curve(X_train, y_train, X_test, y_test, max_k=30):
         fpr = []
         for w in np.arange(-0.01, 1.02, 0.01):
             y_pred = [(0 if p > w else 1) for p in p_pred]
-            tpr.append(sum(1 for yp, yt in zip(y_pred, y_test) if yp == 0 and yt == 0) / positive_samples)
-            fpr.append(sum(1 for yp, yt in zip(y_pred, y_test) if yp == 0 and yt != 0) / (len(y_test) - positive_samples))
+            tpr.append(sum(1 for yp, yt in zip(y_pred, y_test) 
+                           if yp == 0 and yt == 0) / positive_samples)
+            fpr.append(sum(1 for yp, yt in zip(y_pred, y_test) 
+                           if yp == 0 and yt != 0) / (len(y_test) - positive_samples))
         curves_tpr.append(tpr)
         curves_fpr.append(fpr)
     plt.figure(figsize = (7, 7))
